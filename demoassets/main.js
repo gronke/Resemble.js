@@ -49,6 +49,8 @@ $(function(){
 				sampleElement.setAttribute('class', 'sample');
 				sampleElement.style.backgroundColor = 'rgba(' + data[i].r + ', ' + data[i].g + ', ' + data[i].b + ', ' + data[i].a + ')';
 
+				sampleElement.innerHTML = data[i].count;
+
 				$t.append(sampleElement);
 			}
 

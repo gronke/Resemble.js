@@ -67,8 +67,10 @@ footer {
 .sample {
     position: relative;
     margin: 10px;
-    width: 32px;
-    height: 32px;
+    width: 64px;
+    height: 64px;
     border: 1px solid #CCC;
     float: left;
+    text-align: center;
+    line-height: 64px;
 }

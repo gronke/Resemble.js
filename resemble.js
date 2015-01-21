@@ -69,12 +69,12 @@ URL: https://github.com/Huddle/Resemble.js
 		var updateCallbackArray = [];
 
 		var tolerance = { // between 0 and 255
-			red: 16,
-			green: 16,
-			blue: 16,
-			alpha: 16,
+			red: 64,
+			green: 64,
+			blue: 64,
+			alpha: 64,
 			minBrightness: 16,
-			maxBrightness: 240
+			maxBrightness: 255
 		};
 
 		var ignoreAntialiasing = false;
@@ -133,6 +133,11 @@ URL: https://github.com/Huddle/Resemble.js
 			triggerDataUpdate();
 		}
 
+		function addDetectedColor(color) {
+			color.count = 1;
+			detectedColors.push(color);
+		}
+
 		function resetDetectedColors() {
 			detectedColors = [];
 		}
@@ -143,6 +148,7 @@ URL: https://github.com/Huddle/Resemble.js
 			for(i=0; i<n; i++) {
 
 				if(isRGBSimilar(detectedColors[i], color)) {
+					detectedColors[i].count++;
 					return detectedColors[i];
 				}
 
@@ -169,7 +175,7 @@ URL: https://github.com/Huddle/Resemble.js
 				var match = detectedColorsMarch(color);
 
 				if(!match) {
-					detectedColors.push(color);
+					addDetectedColor(color);
 				}
 
 			});
