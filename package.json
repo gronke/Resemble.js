@@ -1,11 +1,11 @@
 {
   "name": "resemblejs",
   "version": "1.2.0",
-  "description": "Image analysis and comparison with HTML5",
+  "description": "Image color analysis with HTML5",
   "main": "resemble.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Huddle/Resemble.js.git"
+    "url": "https://github.com/gronke/Resemble.js.git"
   },
   "keywords": [
     "comparison",
@@ -15,10 +15,13 @@
     "compare",
     "html5"
   ],
-  "author": "James Cryer",
+  "authors": [
+    "James Cryer",
+    "Stefan Grönke"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Huddle/Resemble.js/issues"
+    "url": "https://github.com/gronke/Resemble.js/issues"
   },
-  "homepage": "https://github.com/Huddle/Resemble.js"
+  "homepage": "https://github.com/gronke/Resemble.js"
 }

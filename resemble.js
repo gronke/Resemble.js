@@ -80,6 +80,8 @@ URL: https://github.com/Huddle/Resemble.js
 		var ignoreAntialiasing = false;
 		var ignoreColors = false;
 
+		var detectedColors = [];
+
 		function triggerDataUpdate(){
 			var len = updateCallbackArray.length;
 			var i;
@@ -129,6 +131,52 @@ URL: https://github.com/Huddle/Resemble.js
 			data.brightness = Math.floor(brightnessTotal / pixelCount);
 
 			triggerDataUpdate();
+		}
+
+		function resetDetectedColors() {
+			detectedColors = [];
+		}
+
+		function detectedColorsMarch(color) {
+
+			var i, n=detectedColors.length;
+			for(i=0; i<n; i++) {
+
+				if(isRGBSimilar(detectedColors[i], color)) {
+					return detectedColors[i];
+				}
+
+			}
+
+			return false;
+
+		}
+
+		function parseImageAnalysis(sourceImageData, width, height) {
+
+			var pixelCount = 0;
+			resetDetectedColors();
+
+			loop(height, width, function(verticalPos, horizontalPos) {
+				var offset = (verticalPos*width + horizontalPos) * 4;
+				var color = { 
+					r: sourceImageData[offset],
+					g: sourceImageData[offset + 1],
+					b: sourceImageData[offset + 2],
+				};
+				color.a = getBrightness(color.r, color.g, color.b);
+
+				var match = detectedColorsMarch(color);
+
+				if(!match) {
+					detectedColors.push(color);
+				}
+
+			});
+
+			data = detectedColors;
+			triggerDataUpdate();
+
 		}
 
 		function loadImageData( fileData, callback ){
@@ -606,7 +654,7 @@ URL: https://github.com/Huddle/Resemble.js
 			onComplete: function( callback ){
 				updateCallbackArray.push(callback);
 				loadImageData(fileData, function(imageData, width, height){
-					parseImage(imageData.data, width, height);
+					parseImageAnalysis(imageData.data, width, height);
 				});
 			},
 			compareTo: function(secondFileData){

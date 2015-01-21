@@ -13,7 +13,7 @@
 		<div class="container">
 			<header>
 				<div class="page-header">
-					<h1>Resemble.js : Image analysis and comparison</h1>
+					<h1>Resemble.js (fork) : Image color analysis</h1>
 				</div>
 			</header>
 	
@@ -61,79 +61,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="span12">
-						<div class="row">
-							<div class="span6">
-								<div id="dropzone1" class="small-drop-zone">
-									Drop first image
-								</div>
-								<div id="dropzone2" class="small-drop-zone">
-									Drop second image
-								</div>
-							</div>
-							<div class="span6">
-								<h2>Compare two images?</h2>
-								<p>
-									Drop two images on the boxes to the left.  The box below will show a generated 'diff' image, pink areas show mismatch.  This example best works with two very similar but slightly different images.  Try for yourself!
-								</p>
-								<p>
-								Don't have any images to compare? <button class="btn" id="example-images">Use example images</button>
-								</p>
-								<div id="image-diff" class="small-drop-zone">
-									Diff will appear here.
-								</div>
-								<br/>
-
-								<div class="btn-group buttons" style="display:none">
-									<button class="btn active" id="raw">Ignore nothing</button>
-									<button class="btn" id="colors">Ignore colors</button>
-									<button class="btn" id="antialising">Ignore antialiasing</button>
-								</div>
-
-								<br/>
-								<br/>
-
-								<div class="btn-group buttons" style="display:none">
-									<button class="btn active" id="pink">Pink</button>
-									<button class="btn" id="yellow">Yellow</button>
-								</div>
-								<br/>
-								<br/>
-
-								<div class="btn-group buttons" style="display:none">
-									<button class="btn active" id="flat">Flat</button>
-									<button class="btn" id="movement">Movement</button>
-									<button class="btn" id="flatDifferenceIntensity">Flat with diff intensity</button>
-									<button class="btn" id="movementDifferenceIntensity">Movement with diff intensity</button>
-								</div>
-								<br/>
-								<br/>
-
-								<div class="btn-group buttons" style="display:none">
-									<button class="btn active" id="opaque">Opaque</button>
-									<button class="btn" id="transparent">Transparent</button>
-								</div>
-
-								<br/>
-								<br/>
-								<div id="diff-results" style="display:none;">
-									<p>
-										<strong>The second image is <span id="mismatch"></span>% different compared to the first.
-										<span id="differentdimensions" style="display:none;">And they have different dimensions.</span></strong>
-									</p>
-									<p>
-										Use the buttons above to change the comparison algorithm.  Perhaps you don't care about color? Annoying antialiasing causing too much noise?  Resemble.js offers multiple comparison options.
-									</p>
-								</div>
-								
-								<p id="thesame" style="display:none;">
-									<strong>These images are the same!</strong>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
 				<br/><br/>
 				<div class="row">
 					<div class="span6">
@@ -146,7 +73,7 @@
 						</p>
 						<p>
 							<br/>
-							<a class="btn btn-large btn-primary" href="https://github.com/Huddle/Resemble.js"><strong>View project on Github</strong></a>
+							<a class="btn btn-large btn-primary" href="https://github.com/gronke/Resemble.js"><strong>View project on Github</strong></a>
 						</p>
 					</div>
 					<div class="span6">
@@ -156,24 +83,12 @@
 var api = resemble(fileData).onComplete(function(data){
 	return data;
 	/*
-	{
-	  red: 255,
-	  green: 255,
-	  blue: 255,
-	  brightness: 255
-	}
-	*/
-});</pre>
-						<p>Use resemble to compare two images.</p>
-						<pre>
-resemble(file).compareTo(file2).onComplete(function(){
-	return data;
-	/*
-	{
-	  misMatchPercentage : 100, // %
-	  isSameDimensions: true, // or false
-	  getImageDataUrl: function(){}
-	}
+	[{
+	  r: 255,
+	  g: 255,
+	  b: 255,
+	  a: 255
+	}]
 	*/
 });</pre>
 <p>Take a look at the <a href="demoassets/main.js" target="_blank">JavaScript for this demo page</a> from a better example</p>

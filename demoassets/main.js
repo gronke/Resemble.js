@@ -40,11 +40,24 @@ $(function(){
 	dropZone($target, function(file){
 
 		resemble(file).onComplete(function(data){
-			$('#image-data').show();
+
+			var $t = $('#image-data');
+			$t.show().html('');
+			//$('#image-data').html('<pre>' + JSON.stringify(data) + '</pre>');
+
+			for(var i=0; i<data.length; i++) {
+				var sampleElement = document.createElement('div');
+				sampleElement.setAttribute('class', 'sample');
+				sampleElement.style.backgroundColor = 'rgba(' + data[i].r + ', ' + data[i].g + ', ' + data[i].b + ', ' + data[i].a + ')';
+
+				$t.append(sampleElement);
+			}
+			/*
 			$('#red').css('width',data.red+'%');
 			$('#green').css('width',data.green+'%');
 			$('#blue').css('width',data.blue+'%');
 			$('#brightness').css('width',data.brightness+'%');
+			*/
 		});
 
 	});
