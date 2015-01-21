@@ -43,7 +43,6 @@ $(function(){
 
 			var $t = $('#image-data');
 			$t.show().html('');
-			//$('#image-data').html('<pre>' + JSON.stringify(data) + '</pre>');
 
 			for(var i=0; i<data.length; i++) {
 				var sampleElement = document.createElement('div');
@@ -52,12 +51,7 @@ $(function(){
 
 				$t.append(sampleElement);
 			}
-			/*
-			$('#red').css('width',data.red+'%');
-			$('#green').css('width',data.green+'%');
-			$('#blue').css('width',data.blue+'%');
-			$('#brightness').css('width',data.brightness+'%');
-			*/
+
 		});
 
 	});
